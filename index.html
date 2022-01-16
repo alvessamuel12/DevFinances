@@ -77,7 +77,7 @@
                     </div>
                     <div class="input-group">
                         <label class="sr-only" for="amount">Valor</label>
-                        <input type="text" step="0.01" id="amount" name="amount" placeholder="0,00">
+                        <input type="text" step="0.01" id="amount" name="amount" placeholder="0,00" pattern="/\D\.\,/g">
 
                         <small class="help">Use o sinal de <strong>-</strong> (negativo) para despesas e <strong>,</strong> (vírgula) para casas decimais</small>
                     </div>

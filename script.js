@@ -95,7 +95,8 @@ const DOM = {
 const Utils = {
 
     formatAmount(value) {
-        value = Number(value.replace(/\,\./g,"")) * 100;
+        value = value.replace(".", "");
+        value = Number(value.replace(",",""));
         return value;
     },
 
@@ -107,7 +108,6 @@ const Utils = {
     formatCurrency(value) {
         const signal = Number(value) < 0 ? "-" : "";
         value = String(value).replace(/\D/g, "");
-        
         value = Number(value)/100;
         value = value.toLocaleString("pt-BR", {
             style: "currency",
@@ -163,7 +163,7 @@ const Form = {
             Transaction.add(transaction);
             // apagar os dados do formulário
             this.clearFields();
-            console.log(Transaction.all);
+            // console.log(Transaction.all);
             // fechar modal
             Modal.close();
             // atualizar a aplicação

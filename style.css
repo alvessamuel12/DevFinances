@@ -205,10 +205,12 @@ td.description {
 
 td.income {
     color: #12a454;
+    flex-wrap: nowrap;
 }
 
 td.expense {
     color: #e92929;
+    flex-wrap: nowrap;
 }
 
 /* Modal ====================================== */
@@ -299,6 +301,11 @@ footer p {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+    }
+
+    td.income, td.expense {
+        display: flex;
+        word-wrap: nowrap;
     }
 }
 
