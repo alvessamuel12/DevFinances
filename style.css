@@ -194,8 +194,6 @@ table tbody tr:hover {
 }
 
 table tbody td {
-    background: white;
-    padding: 1rem 2rem;
     font-weight: normal;
 }
 
@@ -203,14 +201,22 @@ td.description {
     color: var(--color-dark-blue);
 }
 
+
+/* TODO corrigir o erro de formatação */
 td.income {
     color: #12a454;
-    flex-wrap: nowrap;
+    word-wrap: nowrap;
 }
 
 td.expense {
     color: #e92929;
-    flex-wrap: nowrap;
+    word-wrap: nowrap;
+}
+
+td.remove-icon {
+    display: flex;
+    align-items: center;
+    /* padding: 1.5rem 2rem; */
 }
 
 /* Modal ====================================== */
