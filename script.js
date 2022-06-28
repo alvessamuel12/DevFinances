@@ -1,3 +1,6 @@
+const toggleSwitch = document.querySelector("#toggle-switch");
+const switchButtom = document.querySelector("#switch");
+
 const Modal = {
     open() {
         // Abrir Modal
@@ -99,6 +102,7 @@ const Utils = {
 
     formatAmount(value) {
         value = Number(value.replace(/\D/g, ""));
+        value = (switchButtom.innerText === "saida") ? value*-1 : value;
         return value;
     },
 
@@ -215,3 +219,9 @@ App.init();
             date: '12/08/2021'
         }
     ], */
+
+toggleSwitch.addEventListener("click", () => {
+    toggleSwitch.classList.toggle("out");
+    switchButtom.innerText = (switchButtom.innerText === "saida") ? "entrada" : "saida";
+    console.log(switchButtom.innerText);
+});

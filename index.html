@@ -52,7 +52,7 @@
                 <thead>
                     <tr>
                         <th>Descrição</th>
-                        <th>Valor</th>
+                        <th>Agua</th>
                         <th>Data</th>
                         <th></th>
                     </tr>
@@ -76,10 +76,14 @@
                         <input type="text" id="description" name="description" placeholder="Descrição">
                     </div>
                     <div class="input-group">
-                        <label class="sr-only" for="amount">Valor</label>
-                        <input type="text" id="amount" name="amount" placeholder="0,00" pattern="/\D\.\,/g" onkeyup="Utils.updateCurrencyField(this)">
-
-                        <small class="help">Use o sinal de <strong>-</strong> (negativo) para despesas e <strong>,</strong> (vírgula) para casas decimais</small>
+                        <div id="toggle-input-group">
+                            <div class="operations">
+                                <label class="sr-only" for="toggle-switch">Opção Entrada/Saída</label>
+                                <div name="operation" class="" id="toggle-switch"><span id="switch">entrada</span></div>
+                            </div>
+                            <label class="sr-only" for="amount">Valor</label>
+                            <input type="text" id="amount" name="amount" placeholder="0,00" pattern="/\D\.\,/g" onkeyup="Utils.updateCurrencyField(this)">    
+                        </div>
                     </div>
                     <div class="input-group">
                         <label class="sr-only"
