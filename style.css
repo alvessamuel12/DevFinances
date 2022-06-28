@@ -18,6 +18,7 @@ html {
 }
 
 body {
+    display: block;
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
 }
@@ -38,6 +39,9 @@ body {
 .container {
     width: min(90vw, 800px);
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* titles ===================================== */
@@ -134,7 +138,7 @@ header {
     font-size: 1rem;
 
     display: flex;
-    align-items: center; /* alinha o eixo X*/
+    align-items: center; /* alinha o eixo Y*/
     justify-content: space-between;
 }
 
@@ -182,35 +186,39 @@ table thead th {
 
 table td {
     background: white;
+    font-weight: normal;
     padding: 1rem 2rem;
+    text-align: left;
 }
 
 table tr {
+    display: table-row;
     opacity: .7;
+    
 }
 
 table tbody tr:hover {
     opacity: 1;
 }
 
-table tbody td {
-    background: white;
-    padding: 1rem 2rem;
-    font-weight: normal;
-}
-
 td.description {
     color: var(--color-dark-blue);
+    word-wrap: normal;
 }
 
 td.income {
     color: #12a454;
-    flex-wrap: nowrap;
+    word-wrap: normal;
 }
 
 td.expense {
-    color: #e92929;
-    flex-wrap: nowrap;
+    color: var(--red);
+    word-wrap: normal;
+}
+
+td.remove-icon img {
+    position: absolute;
+    transform: translateY(-50%);
 }
 
 /* Modal ====================================== */
@@ -272,7 +280,7 @@ input {
     opacity: .4;
 }
 
-.input-group.actions {
+.input-group.actions, #toggle-input-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -282,6 +290,50 @@ input {
 .input-group.actions button {
     width: 48%;
 }
+
+.operations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#toggle-switch {
+    box-sizing: border-box;
+    text-align: left;
+    position: relative;
+    width: 5.8rem;
+    height: 1.5rem;
+    border-radius: 25px;
+    padding-left: .25em;
+    margin: 0 1em;
+    color: white;
+    background: var(--green);
+    transition: .3s ease;
+}
+
+#toggle-switch > #switch::before {
+    content: '';
+    position: absolute;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(4.2em);
+    background-color: white;
+    transition: .3s ease;
+}
+
+#toggle-switch.out {
+    background: var(--red);
+    text-align: end;
+    padding-right: .3em;
+}
+
+#toggle-switch.out > #switch::before {
+    left: 0.25em;
+    transform: translateY(-50%) translateX(-.05em);
+}
+
 
 /* footer ===================================== */
 footer p {
@@ -304,7 +356,6 @@ footer p {
     }
 
     td.income, td.expense {
-        display: flex;
         word-wrap: nowrap;
     }
 }

@@ -1,3 +1,6 @@
+const toggleSwitch = document.querySelector("#toggle-switch");
+const switchButtom = document.querySelector("#switch");
+
 const Modal = {
     open() {
         // Abrir Modal
@@ -70,13 +73,14 @@ const DOM = {
         DOM.transactionsContainer.appendChild(tr);
     },
 
+    // TODO refatorar o innerHtml 
     innerHTMLTransaction(transaction, index) {
 
         const html = `
             <td class="description">${transaction.description}</td>
             <td class="${transaction.amount > 0 ? "income" : "expense"}">${Utils.formatCurrency(transaction.amount)}</td>
             <td class="date">${transaction.date}</td>
-            <td> <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação"> </td>
+            <td class="remove-icon"> <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação"> </td>
         `;
         return html;
     },
@@ -94,9 +98,11 @@ const DOM = {
 
 const Utils = {
 
+    i : 0,
+
     formatAmount(value) {
-        value = value.replace(".", "");
-        value = Number(value.replace(",",""));
+        value = Number(value.replace(/\D/g, ""));
+        value = (switchButtom.innerText === "saida") ? value*-1 : value;
         return value;
     },
 
@@ -107,6 +113,7 @@ const Utils = {
     
     formatCurrency(value) {
         const signal = Number(value) < 0 ? "-" : "";
+        
         value = String(value).replace(/\D/g, "");
         value = Number(value)/100;
         value = value.toLocaleString("pt-BR", {
@@ -115,6 +122,10 @@ const Utils = {
         });
 
         return signal + value;
+    },
+
+    updateCurrencyField(field) {
+        field.value = this.formatCurrency(field.value);
     }
 }
 
@@ -208,3 +219,9 @@ App.init();
             date: '12/08/2021'
         }
     ], */
+
+toggleSwitch.addEventListener("click", () => {
+    toggleSwitch.classList.toggle("out");
+    switchButtom.innerText = (switchButtom.innerText === "saida") ? "entrada" : "saida";
+    console.log(switchButtom.innerText);
+});
